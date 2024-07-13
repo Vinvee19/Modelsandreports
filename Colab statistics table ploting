@@ -1,0 +1,63 @@
+import numpy as np #numeric calculations and array manupulation
+import pandas as pd # used to handle tabular data and for calculations related to tabular data
+import matplotlib.pyplot as plt #plots
+import seaborn as sns #plots and has inbuilt datasets
+
+table=sns.load_dataset('titanic')
+table.head(10)
+
+tips=sns.load_dataset('tips')
+tips.head()
+
+#5-point summary
+# min, q1(table['col'].quantile(0.25)), q2(median), q3, max(q4)
+
+table[['age','fare']].describe()
+
+mode_=table['age'].mode()[0]
+mode1=table['fare'].mode()[0]
+
+#plt.subplot(total no of rows, total number of columns, plot/grid number )
+plt.subplot(2,2,1)
+table['age'].plot(kind='hist')
+plt.axvline(mode_,color='red')
+
+plt.subplot(2,2,2)
+table['age'].plot(kind='kde')
+plt.axvline(mode_,color='red')
+
+plt.subplot(2,2,3)
+table['fare'].plot(kind='hist')
+plt.axvline(mode1,color='red')
+
+plt.subplot(2,2,4)
+table['fare'].plot(kind='kde')
+plt.axvline(mode1,color='red')
+plt.tight_layout()
+
+
+#plt.subplot(total no of rows, total number of columns, plot/grid number )
+plt.subplot(2,2,1)
+table['age'].plot(kind='hist')
+plt.axvline(mode_,color='red')
+plt.axvline(mean_,color='yellow')
+plt.axvline(med_,color='green')
+
+plt.subplot(2,2,2)
+table['age'].plot(kind='kde')
+plt.axvline(mode_,color='red')
+plt.axvline(mean_,color='yellow')
+plt.axvline(med_,color='green')
+
+plt.subplot(2,2,3)
+table['fare'].plot(kind='hist')
+plt.axvline(mode1,color='red')
+plt.axvline(mean1,color='yellow')
+plt.axvline(med1,color='green')
+
+plt.subplot(2,2,4)
+table['fare'].plot(kind='kde')
+plt.axvline(mode1,color='red')
+plt.axvline(mean1,color='yellow')
+plt.axvline(med1,color='green')
+plt.tight_layout()
